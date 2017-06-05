@@ -19,5 +19,32 @@
 
 如此这般，形成循环，直到*待抓取URL队列*为空，这代表这爬虫系统已经将能够抓取的网页尽数抓完，此时完成了一轮完整的抓取过程。
 
+根据上面的流程我们可以写出爬虫的伪码：
+```python
+waiting_queue = Queue()
+downloaded_set = set()
+downloader = Downloader()
+
+seed_url = "http://www.example.com"
+waiting_queue.push(seed_url)
+
+while(True):
+    if waiting_queue is empty:
+        break
+    
+    current_url = waiting_queue.pop()
+
+    page = downloader.download(current_url)
+    store(page)
+    downloaded_set.add(current_url)
+
+    for url in extract_url(page):
+        if url in downloaded_set:
+	    continue
+	waiting_queue.push(url)
+```
+
 ### 参考资料
 1. [这就是搜索引擎-核心技术详解](https://book.douban.com/subject/7006719/)，作者：张俊林 
+2. [如何入门 Python 爬虫？](https://www.zhihu.com/question/20899988/answer/24923424)，作者：谢科
+
