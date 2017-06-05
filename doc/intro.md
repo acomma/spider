@@ -40,8 +40,8 @@ while(True):
 
     for url in extract_url(page):
         if url in downloaded_set:
-	    continue
-	waiting_queue.push(url)
+            continue
+        waiting_queue.push(url)
 ```
 
 ### 参考资料
