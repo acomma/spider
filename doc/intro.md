@@ -33,11 +33,11 @@ while(True):
         break
     
     current_url = waiting_queue.pop()
-
+    
     page = downloader.download(current_url)
     store(page)
     downloaded_set.add(current_url)
-
+    
     for url in extract_url(page):
         if url in downloaded_set:
             continue
