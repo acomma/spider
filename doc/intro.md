@@ -1,5 +1,8 @@
 # 网络爬虫介绍
 
+## 什么是爬虫
+自动从互联网抓取有价值的信息的程序。
+
 ## 通用网络爬虫框架
 如下图所示是一个通用的网络爬虫框架
 
@@ -20,6 +23,7 @@
 如此这般，形成循环，直到*待抓取URL队列*为空，这代表这爬虫系统已经将能够抓取的网页尽数抓完，此时完成了一轮完整的抓取过程。
 
 根据上面的流程我们可以写出爬虫的伪码：
+
 ```python
 waiting_queue = Queue()
 downloaded_set = set()
@@ -44,6 +48,15 @@ while(True):
         waiting_queue.push(url)
 ```
 
+从宏观上可以将上面的通用爬虫框架分为：爬虫调度器，URL管理器，网页下载器，网页解析器，价值数据几大部分。
+
+![爬虫架构](images/爬虫架构.png)
+
+## 爬虫的种类
+1. 批量型爬虫。有明确的抓取范围和目标，达到目标后即停止抓取。
+2. 增量型爬虫。持续不断的抓取，对于抓取到的网页，要定期更新。
+3. 垂直型爬虫。关注特定主题内容或属于特定行业的网页。
+
 ## 在开始之前
 1. 检查robots.txt。http://www.robotstxt.org/。
 2. 检查网站地图。http://www.sitemaps.org/protocol.html。
@@ -55,4 +68,6 @@ while(True):
 1. [这就是搜索引擎-核心技术详解](https://book.douban.com/subject/7006719/)，作者：张俊林 
 2. [如何入门 Python 爬虫？](https://www.zhihu.com/question/20899988/answer/24923424)，作者：谢科
 3. [用Python写网络爬虫](https://book.douban.com/subject/26869992/)，作者：Richard Lawson
+4. [Python开发简单爬虫](http://www.imooc.com/learn/563)，作者：疯狂的蚂蚁crazyant
+
 
