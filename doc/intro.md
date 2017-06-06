@@ -44,7 +44,15 @@ while(True):
         waiting_queue.push(url)
 ```
 
+## 在开始之前
+1. 检查robots.txt。http://www.robotstxt.org/。
+2. 检查网站地图。http://www.sitemaps.org/protocol.html。
+3. 估算网站大小。利用搜索引擎的`site`关键字。例如：`site:www.example.com`。
+4. 识别网站所用技术。利用python的`builtwith`模块。
+5. 寻找网站所有者。利用`WHOIS协议`，python有一个封装库`python-whois`。
+
 ### 参考资料
 1. [这就是搜索引擎-核心技术详解](https://book.douban.com/subject/7006719/)，作者：张俊林 
 2. [如何入门 Python 爬虫？](https://www.zhihu.com/question/20899988/answer/24923424)，作者：谢科
+3. [用Python写网络爬虫](https://book.douban.com/subject/26869992/)，作者：Richard Lawson
 
