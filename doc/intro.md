@@ -64,6 +64,11 @@ while(True):
 4. 识别网站所用技术。利用python的`builtwith`模块。
 5. 寻找网站所有者。利用`WHOIS协议`，python有一个封装库`python-whois`。
 
+## 抓取数据的方式
+1. 正则表达式
+2. Beautiful Soup
+3. Lxml
+
 ### 参考资料
 1. [这就是搜索引擎-核心技术详解](https://book.douban.com/subject/7006719/)，作者：张俊林 
 2. [如何入门 Python 爬虫？](https://www.zhihu.com/question/20899988/answer/24923424)，作者：谢科
