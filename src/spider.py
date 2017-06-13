@@ -19,7 +19,11 @@ def extract_url(page):
     url_regex = re.compile('<a[^>]+href=["\'](.*?)["\']', re.IGNORECASE)
     return url_regex.findall(page)
 
-def crawl():
+def default_callback(page):
+    # TODO 处理页面中有用的数据
+    return extract_url(page)
+
+def crawl(callback=None):
     while(True):
         if not waiting_queue:
             break
@@ -27,7 +31,10 @@ def crawl():
         current_url = waiting_queue.popleft()
         page = download(current_url)
 
-        links = extract_url(page)
+        links = []
+        if callback:
+            links.extend(callback(page) or [])
+        
         for link in links:
             if link == "#":
                 continue
@@ -38,4 +45,4 @@ def crawl():
         downloaded_set.add(current_url)
 
 if __name__ == "__main__":
-    crawl()
+    crawl(default_callback)
