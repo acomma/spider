@@ -15,7 +15,7 @@ waiting_queue.append(seed_url)
 def extract_url(page):
     if not page:
         return None
-    # 提取URL正则表达式
+    # 提取URL正则表达式'<a[^>]+href=["\'](.*?)["\']'
     url_regex = re.compile('<a[^>]+href=["\'](.*?)["\']', re.IGNORECASE)
     return url_regex.findall(page)
 
@@ -27,7 +27,7 @@ def crawl():
         current_url = waiting_queue.popleft()
         page = download(current_url)
 
-        links = extract_url(page.decode('utf-8'))
+        links = extract_url(page)
         for link in links:
             if link == "#":
                 continue
