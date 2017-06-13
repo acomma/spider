@@ -36,7 +36,7 @@ def crawl(callback=None):
             links.extend(callback(page) or [])
         
         for link in links:
-            if link == "#":
+            if link == "#" or link == "javascript:void(0)":
                 continue
             print(link)
             complete_link = urljoin(seed_url, link)
